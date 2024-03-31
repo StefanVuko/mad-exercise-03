@@ -64,15 +64,7 @@ var appbars = AppBars()
 @Composable
 fun HomeScreen(navController: NavController) {
     Scaffold (
-        topBar = {
-            CenterAlignedTopAppBar(
-                title = { Text("Stefan's Movie App")},
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primaryContainer,
-                    titleContentColor = MaterialTheme.colorScheme.primary
-                )
-            )
-        },
+        topBar = { appbars.SimpleTopAppBar(isDetail = false, movieId = "asd", navController = navController, "Stefan's Movie App")},
         bottomBar = {
             appbars.SimpleBottomAppBar(navController = navController)
         }

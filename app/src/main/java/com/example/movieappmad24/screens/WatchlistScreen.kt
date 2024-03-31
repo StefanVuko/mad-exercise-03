@@ -30,15 +30,7 @@ fun WatchlistScreen(navController: NavController) {
 
     var appbars = AppBars()
     Scaffold(
-        topBar = {
-            CenterAlignedTopAppBar(
-                title = { Text("Your watchlist") },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primaryContainer,
-                    titleContentColor = MaterialTheme.colorScheme.primary
-                )
-            )
-        },
+        topBar = {appbars.SimpleTopAppBar(isDetail = false, movieId = "", navController = navController, "Watchlist")},
         bottomBar = {
             appbars.SimpleBottomAppBar(navController = navController)
         },
