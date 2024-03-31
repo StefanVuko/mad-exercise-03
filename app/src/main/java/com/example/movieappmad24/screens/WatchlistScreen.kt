@@ -18,6 +18,7 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.movieappmad24.components.AppBars
 import com.example.movieappmad24.models.getMovies
 import com.example.movieappmad24.navigation.Screen
 import java.lang.reflect.Modifier
@@ -27,7 +28,7 @@ import java.lang.reflect.Modifier
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 fun WatchlistScreen(navController: NavController) {
 
-
+    var appbars = AppBars()
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
@@ -39,30 +40,7 @@ fun WatchlistScreen(navController: NavController) {
             )
         },
         bottomBar = {
-            NavigationBar {
-                NavigationBarItem(
-                    label = { Text("Home") },
-                    selected = true,
-                    onClick = {navController.navigate(route = Screen.Home.route) },
-                    icon = {
-                        Icon(
-                            imageVector = Icons.Filled.Home,
-                            contentDescription = "Go to home"
-                        )
-                    }
-                )
-                NavigationBarItem(
-                    label = { Text("Watchlist") },
-                    selected = false,
-                    onClick = { navController.navigate(route = Screen.Watchlist.route) },
-                    icon = {
-                        Icon(
-                            imageVector = Icons.Filled.Star,
-                            contentDescription = "Go to watchlist"
-                        )
-                    }
-                )
-            }
+                    appbars.SimpleBottomAppBar(navController = navController)
         },
         content = {
             MovieList(

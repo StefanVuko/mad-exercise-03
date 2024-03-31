@@ -53,10 +53,13 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.SubcomposeAsyncImage
 import coil.request.ImageRequest
+import com.example.movieappmad24.components.AppBars
 import com.example.movieappmad24.models.Movie
 import com.example.movieappmad24.models.getMovies
 import com.example.movieappmad24.navigation.Screen
 
+
+var appbars = AppBars()
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(navController: NavController) {
@@ -71,26 +74,7 @@ fun HomeScreen(navController: NavController) {
             )
         },
         bottomBar = {
-            NavigationBar {
-                NavigationBarItem(
-                    label = { Text("Home") },
-                    selected = true,
-                    onClick = { navController.navigate(route = Screen.Home.route)  },
-                    icon = { Icon(
-                        imageVector = Icons.Filled.Home,
-                        contentDescription = "Go to home"
-                    )}
-                )
-                NavigationBarItem(
-                    label = { Text("Watchlist") },
-                    selected = false,
-                    onClick = { navController.navigate(route = Screen.Watchlist.route)  },
-                    icon = { Icon(
-                        imageVector = Icons.Filled.Star,
-                        contentDescription = "Go to watchlist"
-                    )}
-                )
-            }
+            appbars.SimpleBottomAppBar(navController = navController)
         }
     ){ innerPadding ->
         MovieList(
